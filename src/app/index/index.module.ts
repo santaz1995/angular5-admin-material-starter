@@ -1,21 +1,19 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from 'app/material.module';
-import { StarterRoutes } from 'app/starter/starter.routing';
-import { StarterComponent } from 'app/starter/starter.component';
+import { IndexRouting } from 'app/index/index.routing';
+import { IndexComponent } from 'app/index/index.component';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
     FlexLayoutModule,
-    RouterModule.forChild(StarterRoutes)
-
+    IndexRouting
   ],
-  declarations: [StarterComponent]
+  declarations: [IndexComponent]
 })
 
-export class StarterModule {
+export class IndexModule {
 }

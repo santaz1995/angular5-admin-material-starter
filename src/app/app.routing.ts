@@ -10,7 +10,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/starter',
+        redirectTo: '/index',
         pathMatch: 'full'
       },
       {
@@ -18,8 +18,8 @@ export const routes: Routes = [
         loadChildren: './material-component/material.module#MaterialComponentsModule'
       },
       {
-        path: 'starter',
-        loadChildren: './starter/starter.module#StarterModule'
+        path: 'index',
+        loadChildren: './index/index.module#IndexModule'
       }
     ]
   }

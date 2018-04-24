@@ -8,7 +8,7 @@ export interface Menu {
 }
 
 const menuItems = [
-    {state: 'starter', name: 'Starter Page', type: 'link', icon: 'av_timer' },
+    {state: 'index', name: 'Index Page', type: 'link', icon: 'av_timer' },
     {state: 'button', type: 'link', name: 'Buttons', icon: 'crop_7_5'},
     {state: 'grid', type: 'link', name: 'Grid List', icon: 'view_comfy'},
     {state: 'lists', type: 'link', name: 'Lists', icon: 'view_list'},
