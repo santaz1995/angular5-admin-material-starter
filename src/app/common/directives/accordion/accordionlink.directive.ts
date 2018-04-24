@@ -14,9 +14,22 @@ export class AccordionLinkDirective implements OnInit, OnDestroy {
   @HostBinding('class.selected')
   @Input()
   get selected(): boolean {
-    return this._selected; 
+    return this._selected;
   }
 
+  protected _selected: boolean;
+  protected nav: AccordionDirective;
+
+  /**
+   * @param {AccordionDirective} nav
+   */
+  constructor(@Inject(AccordionDirective) nav: AccordionDirective) {
+    this.nav = nav;
+  }
+
+  /**
+   * @param {boolean} value
+   */
   set selected(value: boolean) {
     this._selected = value;
     if (value) {
@@ -24,23 +37,15 @@ export class AccordionLinkDirective implements OnInit, OnDestroy {
     }
   }
 
-  protected _selected: boolean;
-  protected nav: AccordionDirective;
-
-  constructor(@Inject(AccordionDirective) nav: AccordionDirective) {
-    this.nav = nav;
-  }
-
-  ngOnInit(): any {
+  public ngOnInit(): void {
     this.nav.addLink(this);
-    
   }
 
-  ngOnDestroy(): any {
+  public ngOnDestroy(): void {
     this.nav.removeGroup(this);
   }
 
-  toggle(): any {
+  public toggle(): void {
     this.selected = !this.selected;
   }
 }

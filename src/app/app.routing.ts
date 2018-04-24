@@ -14,12 +14,12 @@ export const routes: Routes = [
         pathMatch: 'full'
       },
       {
-        path: '',
-        loadChildren: './material-component/material.module#MaterialComponentsModule'
-      },
-      {
         path: 'index',
         loadChildren: './index/index.module#IndexModule'
+      },
+      {
+        path: 'project-skills',
+        loadChildren: 'app/projects/skills/skills.module#SkillsModule'
       }
     ]
   }
