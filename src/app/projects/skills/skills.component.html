@@ -25,7 +25,7 @@
                   {{row.createdAt | amFromUtc | amDateFormat: 'MMMM Do YYYY'}}
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Action">
+              <ngx-datatable-column name="Action" [cellClass]="'action-button'">
                 <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
                   Action
                 </ng-template>
