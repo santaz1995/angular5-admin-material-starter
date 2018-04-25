@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { ApiEntity } from 'app/common/entities/api-entity';
@@ -7,10 +7,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export abstract class ApiService<T extends ApiEntity> {
 
-  protected abstract endpointUrl: string;
-
-  constructor(@Inject('backendUrl') protected backendUrl: string,
-              protected http: HttpClient) {
+  protected constructor(protected backendUrl: string,
+                        protected http: HttpClient) {
   }
 
   /**
@@ -77,4 +75,9 @@ export abstract class ApiService<T extends ApiEntity> {
    * @returns {T}
    */
   protected abstract transformData(data: Record<string, any>): T;
+
+  /**
+   * @returns {string}
+   */
+  protected abstract endpointUrl(): string;
 }
