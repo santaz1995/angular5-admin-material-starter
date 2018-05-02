@@ -12,11 +12,24 @@ export abstract class ApiService<T extends ApiEntity> {
   }
 
   /**
+   * Transform data
+   * @param {Record<string, any>} data
+   * @returns {T}
+   */
+  protected abstract transformData(data: Record<string, any>): T;
+
+  /**
+   * Get endpoint url
+   * @returns {string}
+   */
+  protected abstract endpointUrl(): string;
+
+  /**
    * Get full url for request
    * @returns {string}
    */
   protected get fullUrl(): string {
-    return this.backendUrl + this.endpointUrl;
+    return this.backendUrl + this.endpointUrl();
   }
 
   /**
@@ -36,7 +49,7 @@ export abstract class ApiService<T extends ApiEntity> {
    * @param {number} id
    * @returns {Observable<T extends ApiEntity>}
    */
-  protected getById(id: number): Observable<T> {
+  public getById(id: number): Observable<T> {
 
     return this.http.get(`${this.fullUrl}/${id}`)
       .map((data: Record<string, any>) => this.transformData(data));
@@ -47,7 +60,7 @@ export abstract class ApiService<T extends ApiEntity> {
    * @param {T} data
    * @returns {Observable<any>}
    */
-  protected store(data: T): Observable<any> {
+  public store(data: T): Observable<any> {
     return this.http.post(this.fullUrl, data);
   }
 
@@ -56,7 +69,7 @@ export abstract class ApiService<T extends ApiEntity> {
    * @param {T} data
    * @returns {Observable<any>}
    */
-  protected update(data: T): Observable<any> {
+  public update(data: T): Observable<any> {
     return this.http.put(`${this.fullUrl}/${data.id}`, data);
   }
 
@@ -68,16 +81,4 @@ export abstract class ApiService<T extends ApiEntity> {
   public delete(id: number): Observable<any> {
     return this.http.delete(`${this.fullUrl}/${id}`);
   }
-
-  /**
-   * Transform data
-   * @param {Record<string, any>} data
-   * @returns {T}
-   */
-  protected abstract transformData(data: Record<string, any>): T;
-
-  /**
-   * @returns {string}
-   */
-  protected abstract endpointUrl(): string;
 }

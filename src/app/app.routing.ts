@@ -19,7 +19,7 @@ export const routes: Routes = [
       },
       {
         path: 'project-skills',
-        loadChildren: 'app/projects/skills/skills.module#SkillsModule'
+        loadChildren: 'app/projects/skills/skills.module#SkillsModule',
       }
     ]
   }

@@ -9,10 +9,9 @@ export class ProjectSkillsResolver implements Resolve<ProjectSkillEntity[]> {
   constructor(private projectSkillService: ApiProjectSkillService) {}
 
   /**
-   * @param {ActivatedRouteSnapshot} route
    * @returns {Observable<ProjectSkillEntity[]>}
    */
-  public resolve(route: ActivatedRouteSnapshot) {
+  public resolve() {
     return this.projectSkillService.getAll();
   }
 }

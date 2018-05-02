@@ -5,10 +5,10 @@
       <mat-card-content>
         <!-- Row -->
         <div fxLayout="row" fxLayoutWrap="wrap">
-          <!-- column -->
           <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
+            <button mat-raised-button color="accent" routerLink="/project-skills/store">Create new</button>
             <ngx-datatable
-              class="material"
+              class="material mt-3"
               [columnMode]="'force'"
               [rows]="projectSkills"
               [headerHeight]="50"

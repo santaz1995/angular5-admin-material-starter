@@ -44,7 +44,7 @@ export class SkillsComponent {
         this.projectSkillService.delete(id).subscribe( () => {
           const index = this.projectSkills.findIndex(toDelete => toDelete.id === id);
           this.projectSkills.splice(index, 1);
-          this.notification.success('Success', 'Success delete corporate client');
+          this.notification.success('Success', 'Success deleted project skill');
         });
       }
     });

@@ -16,7 +16,6 @@ File: scss
  *	7. Widgets
  *	8. Custom Templates
  */
-
 @import 'variable';
 
 @import '~@swimlane/ngx-datatable/release/index.css';
@@ -29,3 +28,4 @@ File: scss
 @import 'pages';
 @import 'sidebar';
 @import 'responsive';
+@import '~bootstrap/scss/bootstrap';

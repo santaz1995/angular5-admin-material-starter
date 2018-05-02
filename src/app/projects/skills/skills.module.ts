@@ -5,9 +5,11 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { SkillsRouting } from 'app/projects/skills/skills.routing';
 import { SkillsComponent } from 'app/projects/skills/skills.component';
 import { MaterialModule } from 'app/material.module';
-import { ProjectSkillsResolver } from 'app/common/resolvers/project-skills.resolver';
+import { ProjectSkillsResolver } from 'app/common/resolvers/project-skill/project-skills.resolver';
 import { ApiProjectSkillService } from 'app/common/service/data/api-project-skill.service';
 import { MomentModule } from 'angular2-moment';
+import { SkillStoreComponent } from 'app/projects/skills/skill-store/skill-store.component';
+import { SkillUpdateComponent } from 'app/projects/skills/skill-update/skill-update.component';
 
 @NgModule({
   imports: [
@@ -21,6 +23,8 @@ import { MomentModule } from 'angular2-moment';
   ],
   declarations: [
     SkillsComponent,
+    SkillStoreComponent,
+    SkillUpdateComponent
   ],
   providers: [
     ApiProjectSkillService,
