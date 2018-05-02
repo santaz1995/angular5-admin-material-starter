@@ -28,7 +28,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
   constructor(private injector: Injector,
               private router: Router,
-              private notification: NotificationsService ) {
+              private notification: NotificationsService) {
   }
 
   /**

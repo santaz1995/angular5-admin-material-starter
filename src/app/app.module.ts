@@ -15,6 +15,7 @@ import { AppRouting } from 'app/app.routing';
 import { environment } from 'environments/environment';
 import { TokenInterceptor } from 'app/common/token.interceptor';
 import { SimpleNotificationsModule } from 'angular2-notifications/dist';
+import { DeleteEntityModalComponent } from 'app/common/modals/delete-entity/delete-entity-modal.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,12 @@ import { SimpleNotificationsModule } from 'angular2-notifications/dist';
     FullComponent,
     AppHeaderComponent,
     SpinnerComponent,
-    AppSidebarComponent
+    AppSidebarComponent,
+
+    /**
+     * Modals
+     */
+    DeleteEntityModalComponent,
   ],
   providers: [
     {
@@ -45,6 +51,9 @@ import { SimpleNotificationsModule } from 'angular2-notifications/dist';
       useClass: TokenInterceptor,
       multi: true,
     },
+  ],
+  entryComponents: [
+    DeleteEntityModalComponent,
   ],
   bootstrap: [AppComponent]
 })

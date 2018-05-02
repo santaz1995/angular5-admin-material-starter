@@ -1,6 +1,6 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
-import { MenuItems } from 'app/common/components/layouts/menu-items/menu-items';
+import 'rxjs/add/operator/filter';
 
 @Component({
   selector: 'app-full-layout',
@@ -14,14 +14,13 @@ export class FullComponent implements OnDestroy {
   private _mobileQueryListener: () => void;
 
   constructor(changeDetectorRef: ChangeDetectorRef,
-              media: MediaMatcher,
-              public menuItems: MenuItems) {
+              media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(min-width: 768px)');
     this.mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this.mobileQueryListener);
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.mobileQuery.removeListener(this.mobileQueryListener);
   }
 

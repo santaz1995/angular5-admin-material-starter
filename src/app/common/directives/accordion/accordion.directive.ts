@@ -59,6 +59,8 @@ export class AccordionDirective implements AfterContentChecked {
   }
 
   public ngAfterContentChecked(): void {
-    this.router.events.filter( (event) => event instanceof NavigationEnd).subscribe(() => this.checkOpenLinks());
+    this.router.events.filter( (event) => {
+      return event instanceof NavigationEnd;
+    }).subscribe(() => this.checkOpenLinks());
   }
 }
