@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
-import { MenuItems } from 'app/common/components/layouts/menu-items/menu-items';
 import { AccordionAnchorDirective, AccordionDirective, AccordionLinkDirective } from 'app/common/directives/accordion';
-
 
 @NgModule({
   declarations: [
@@ -14,6 +12,5 @@ import { AccordionAnchorDirective, AccordionDirective, AccordionLinkDirective } 
     AccordionLinkDirective,
     AccordionDirective
    ],
-  providers: [ MenuItems ]
 })
 export class CommonModule { }

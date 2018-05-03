@@ -11,7 +11,7 @@ import { NotificationsService } from 'angular2-notifications/dist';
 })
 export class SkillsComponent {
 
-  private readonly projectSkills: ProjectSkillEntity[];
+  private readonly skills: ProjectSkillEntity[];
 
   /**
    * @param {MatDialog} dialog
@@ -23,7 +23,7 @@ export class SkillsComponent {
               private route: ActivatedRoute,
               private notification: NotificationsService,
               private projectSkillService: ApiProjectSkillService) {
-    this.projectSkills = this.route.snapshot.data['projectSkills'];
+    this.skills = this.route.snapshot.data['skills'];
   }
 
   /**
@@ -42,8 +42,8 @@ export class SkillsComponent {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.projectSkillService.delete(id).subscribe( () => {
-          const index = this.projectSkills.findIndex(toDelete => toDelete.id === id);
-          this.projectSkills.splice(index, 1);
+          const index = this.skills.findIndex(toDelete => toDelete.id === id);
+          this.skills.splice(index, 1);
           this.notification.success('Success', 'Success deleted project skill');
         });
       }

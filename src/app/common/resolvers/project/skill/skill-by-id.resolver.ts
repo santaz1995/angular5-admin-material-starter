@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
+import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { ProjectSkillEntity } from 'app/common/entities/project-skill.entity';
 import { ApiProjectSkillService } from 'app/common/service/data/api-project-skill.service';
 
 @Injectable()
-export class ProjectSkillByIdResolver implements Resolve<ProjectSkillEntity> {
+export class SkillByIdResolver implements Resolve<ProjectSkillEntity> {
 
   constructor(private projectSkillService: ApiProjectSkillService) {}
 

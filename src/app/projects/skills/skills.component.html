@@ -6,11 +6,11 @@
         <!-- Row -->
         <div fxLayout="row" fxLayoutWrap="wrap">
           <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
-            <button mat-raised-button color="accent" routerLink="/project-skills/store">Create new</button>
+            <button mat-raised-button color="accent" routerLink="/projects/skills/store">Create new</button>
             <ngx-datatable
               class="material mt-3"
               [columnMode]="'force'"
-              [rows]="projectSkills"
+              [rows]="skills"
               [headerHeight]="50"
               [footerHeight]="50"
               [rowHeight]="50"
@@ -30,7 +30,7 @@
                   Action
                 </ng-template>
                 <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-                  <button mat-button color="accent">Edit</button>
+                  <button mat-button color="accent" routerLink="{{row.id}}">Edit</button>
                   <button mat-button color="warn" (click)="deleteSkill(row.id, row.title)">Delete</button>
                 </ng-template>
               </ngx-datatable-column>

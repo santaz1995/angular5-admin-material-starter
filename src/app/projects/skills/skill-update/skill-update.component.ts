@@ -15,7 +15,7 @@ export class SkillUpdateComponent {
 
   private handleBackendErrors = handleBackendErrors;
 
-  private readonly projectSkill: ProjectSkillEntity;
+  private readonly skill: ProjectSkillEntity;
 
   /**
    * @param {ActivatedRoute} route
@@ -27,7 +27,7 @@ export class SkillUpdateComponent {
               private router: Router,
               private notification: NotificationsService,
               private projectSkillService: ApiProjectSkillService) {
-    this.projectSkill = this.route.snapshot.data['projectSkill'];
+    this.skill = this.route.snapshot.data['skill'];
     this.createForm();
   }
 
@@ -48,7 +48,7 @@ export class SkillUpdateComponent {
    */
   private createForm(): void {
     this.skillForm = new FormGroup({
-      title: new FormControl(this.projectSkill.title, [Validators.required]),
+      title: new FormControl(this.skill.title, [Validators.required]),
     });
   }
 }

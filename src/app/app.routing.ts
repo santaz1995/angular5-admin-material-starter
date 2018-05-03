@@ -18,7 +18,7 @@ export const routes: Routes = [
         loadChildren: './index/index.module#IndexModule'
       },
       {
-        path: 'project-skills',
+        path: 'projects/skills',
         loadChildren: 'app/projects/skills/skills.module#SkillsModule',
       }
     ]

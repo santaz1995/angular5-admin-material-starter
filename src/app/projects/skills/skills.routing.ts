@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SkillsComponent } from 'app/projects/skills/skills.component';
-import { ProjectSkillsResolver } from 'app/common/resolvers/project-skill/project-skills.resolver';
 import { SkillStoreComponent } from 'app/projects/skills/skill-store/skill-store.component';
-import { ProjectSkillByIdResolver } from 'app/common/resolvers/project-skill/project-skill-by-id.resolver';
 import { SkillUpdateComponent } from 'app/projects/skills/skill-update/skill-update.component';
+import { SkillsResolver } from 'app/common/resolvers/project/skill/skills.resolver';
+import { SkillByIdResolver } from 'app/common/resolvers/project/skill/skill-by-id.resolver';
 
 const routes: Routes = [
   {
     path: '',
     component: SkillsComponent,
     resolve: {
-      projectSkills: ProjectSkillsResolver,
+      skills: SkillsResolver,
     },
   },
   {
@@ -22,7 +22,7 @@ const routes: Routes = [
     path: ':id',
     component: SkillUpdateComponent,
     resolve: {
-      projectSkill: ProjectSkillByIdResolver,
+      skill: SkillByIdResolver,
     },
   },
 ];
