@@ -37,7 +37,7 @@ export class SkillUpdateComponent {
   public update(): void {
     this.projectSkillService.update(this.skillForm.value).subscribe( () => {
       this.notification.success('Success', 'Project skill updated');
-      this.router.navigateByUrl('/project-skills');
+      this.router.navigateByUrl('/projects/skills');
     }, (errorRequest) => {
       this.handleBackendErrors(this.skillForm, errorRequest.error.violations);
     });
@@ -48,6 +48,7 @@ export class SkillUpdateComponent {
    */
   private createForm(): void {
     this.skillForm = new FormGroup({
+      id: new FormControl(this.skill.id, [Validators.required]),
       title: new FormControl(this.skill.title, [Validators.required]),
     });
   }

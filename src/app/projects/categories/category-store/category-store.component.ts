@@ -1,27 +1,27 @@
 import { Component } from '@angular/core';
-import { ApiProjectSkillService } from 'app/common/service/data/api-project-skill.service';
 import { NotificationsService } from 'angular2-notifications/dist';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { handleBackendErrors } from 'app/common/app-helpers';
 import { Router } from '@angular/router';
+import { ApiProjectCategoryService } from 'app/common/service/data/api-project-category.service';
 
 @Component({
-  templateUrl: 'skill-store.component.html',
+  templateUrl: 'category-store.component.html',
 })
-export class SkillStoreComponent {
+export class CategoryStoreComponent {
 
-  public skillForm: FormGroup;
+  public categoryForm: FormGroup;
 
   private handleBackendErrors = handleBackendErrors;
 
   /**
    * @param {Router} router
    * @param {NotificationsService} notification
-   * @param {ApiProjectSkillService} projectSkillService
+   * @param {ApiProjectCategoryService} projectCategoryService
    */
   constructor(private router: Router,
               private notification: NotificationsService,
-              private projectSkillService: ApiProjectSkillService) {
+              private projectCategoryService: ApiProjectCategoryService) {
     this.createForm();
   }
 
@@ -29,19 +29,19 @@ export class SkillStoreComponent {
    * Store project skill
    */
   protected store(): void {
-    this.projectSkillService.store(this.skillForm.value).subscribe( () => {
-      this.notification.success('Success', 'Project skill created');
-      this.router.navigateByUrl('/projects/skills');
+    this.projectCategoryService.store(this.categoryForm.value).subscribe( () => {
+      this.notification.success('Success', 'Project category created');
+      this.router.navigateByUrl('/projects/categories');
     }, (errorRequest) => {
-      this.handleBackendErrors(this.skillForm, errorRequest.error.violations);
+      this.handleBackendErrors(this.categoryForm, errorRequest.error.violations);
     });
   }
 
   /**
-   * Form store skill
+   * Form store category
    */
   private createForm(): void {
-    this.skillForm = new FormGroup({
+    this.categoryForm = new FormGroup({
       title: new FormControl(null, [Validators.required]),
     });
   }

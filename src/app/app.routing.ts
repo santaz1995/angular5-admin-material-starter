@@ -20,6 +20,10 @@ export const routes: Routes = [
       {
         path: 'projects/skills',
         loadChildren: 'app/projects/skills/skills.module#SkillsModule',
+      },
+      {
+        path: 'projects/categories',
+        loadChildren: 'app/projects/categories/categories.module#CategoriesModule',
       }
     ]
   }
