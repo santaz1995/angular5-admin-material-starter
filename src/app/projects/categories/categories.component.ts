@@ -2,32 +2,32 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { DeleteEntityModalComponent } from 'app/common/modals/delete-entity/delete-entity-modal.component';
-import { ProjectSkillEntity } from 'app/common/entities/project-skill.entity';
-import { ApiProjectSkillService } from 'app/common/service/data/api-project-skill.service';
 import { NotificationsService } from 'angular2-notifications/dist';
+import { ProjectCategoryEntity } from 'app/common/entities/project-category.entity';
+import { ApiProjectCategoryService } from 'app/common/service/data/api-project-category.service';
 
 @Component({
-  templateUrl: 'skills.component.html',
+  templateUrl: 'categories.component.html',
 })
-export class SkillsComponent {
+export class CategoriesComponent {
 
-  private readonly skills: ProjectSkillEntity[];
+  private readonly categories: ProjectCategoryEntity[];
 
   /**
    * @param {MatDialog} dialog
    * @param {ActivatedRoute} route
    * @param {NotificationsService} notification
-   * @param {ApiProjectSkillService} projectSkillService
+   * @param {ApiProjectCategoryService} projectCategoryService
    */
   constructor(public dialog: MatDialog,
               private route: ActivatedRoute,
               private notification: NotificationsService,
-              private projectSkillService: ApiProjectSkillService) {
-    this.skills = this.route.snapshot.data['skills'];
+              private projectCategoryService: ApiProjectCategoryService) {
+    this.categories = this.route.snapshot.data['categories'];
   }
 
   /**
-   * Delete skill
+   * Delete category
    * @param id
    * @param title
    */
@@ -35,16 +35,16 @@ export class SkillsComponent {
     const dialogRef = this.dialog.open(DeleteEntityModalComponent, {
       width: '320px',
       data: {
-        entity: 'Skill'
+        entity: 'Category'
       }
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.projectSkillService.delete(id).subscribe( () => {
-          const index = this.skills.findIndex(toDelete => toDelete.id === id);
-          this.skills.splice(index, 1);
-          this.notification.success('Success', 'Success deleted project skill');
+        this.projectCategoryService.delete(id).subscribe( () => {
+          const index = this.categories.findIndex(toDelete => toDelete.id === id);
+          this.categories.splice(index, 1);
+          this.notification.success('Success', 'Success deleted project category');
         });
       }
     });

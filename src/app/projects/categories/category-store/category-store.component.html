@@ -1,0 +1,24 @@
+<div fxLayout="row" fxLayoutWrap="wrap">
+  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <div fxLayout="row" fxLayoutWrap="wrap">
+          <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
+            <form [formGroup]="categoryForm" novalidate>
+              <div class="form-container">
+                <mat-form-field>
+                  <input matInput placeholder="Title category" formControlName="title">
+                  <app-form-error-message [field]="categoryForm.controls.title"></app-form-error-message>
+                </mat-form-field>
+                </div>
+              <div class="d-flex justify-content-end">
+                <button mat-button color="accent" routerLink="/projects/categories">Back</button>
+                <button mat-raised-button color="accent" (click)="store()" [disabled]="!categoryForm.valid">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
