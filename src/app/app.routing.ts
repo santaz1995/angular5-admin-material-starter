@@ -18,13 +18,9 @@ export const routes: Routes = [
         loadChildren: './index/index.module#IndexModule'
       },
       {
-        path: 'projects/skills',
-        loadChildren: 'app/projects/skills/skills.module#SkillsModule',
+        path: 'projects',
+        loadChildren: 'app/projects/projects.module#ProjectsModule',
       },
-      {
-        path: 'projects/categories',
-        loadChildren: 'app/projects/categories/categories.module#CategoriesModule',
-      }
     ]
   }
 ];

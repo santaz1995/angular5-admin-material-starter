@@ -1,0 +1,54 @@
+<div fxLayout="row" fxLayoutWrap="wrap">
+  <!-- column -->
+  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <!-- Row -->
+        <div fxLayout="row" fxLayoutWrap="wrap">
+          <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
+            <button mat-raised-button color="accent" routerLink="/projects/store">Create new</button>
+            <ngx-datatable
+              class="material mt-3"
+              [columnMode]="'force'"
+              [rows]="projects"
+              [headerHeight]="50"
+              [footerHeight]="50"
+              [rowHeight]="50"
+              [sortType]="'multi'">
+              <ngx-datatable-column prop="id" name="ID" [maxWidth]="30"></ngx-datatable-column>
+              <ngx-datatable-column prop="title" name="Title"></ngx-datatable-column>
+              <ngx-datatable-column prop="company" name="Company"></ngx-datatable-column>
+              <ngx-datatable-column prop="url" name="Url"></ngx-datatable-column>
+              <ngx-datatable-column name="Created at">
+                <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                  Created at
+                </ng-template>
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                  {{row.createdAt | amFromUtc | amDateFormat: 'MMMM Do YYYY'}}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Realest date">
+                <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                  Realest date
+                </ng-template>
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                  {{row.realestDate | amFromUtc | amDateFormat: 'MMMM Do YYYY'}}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Action" [cellClass]="'action-button'">
+                <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                  Action
+                </ng-template>
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                  <button mat-button color="accent" routerLink="{{row.id}}">Edit</button>
+                  <button mat-button color="warn" (click)="delete(row.id, row.title)">Delete</button>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <!-- column -->
+</div>
