@@ -8,6 +8,11 @@ import { ApiProjectService } from 'app/common/service/data/api-project.service';
 import { ProjectsResolver } from 'app/common/resolvers/project/projects.resolver';
 import { ProjectsComponent } from 'app/projects/projects.component';
 import { ProjectsRouting } from 'app/projects/projects.routing';
+import { ProjectStoreComponent } from 'app/projects/project-store/project-store.component';
+import { CategoriesResolver } from 'app/common/resolvers/project/category/categories.resolver';
+import { ApiProjectCategoryService } from 'app/common/service/data/api-project-category.service';
+import { ProjectUpdateComponent } from 'app/projects/project-update/project-update.component';
+import { ProjectByIdResolver } from 'app/common/resolvers/project/project-by-id.resolver';
 
 @NgModule({
   imports: [
@@ -21,10 +26,15 @@ import { ProjectsRouting } from 'app/projects/projects.routing';
   ],
   declarations: [
     ProjectsComponent,
+    ProjectStoreComponent,
+    ProjectUpdateComponent,
   ],
   providers: [
     ApiProjectService,
+    ApiProjectCategoryService,
     ProjectsResolver,
+    ProjectByIdResolver,
+    CategoriesResolver
   ],
 })
 export class ProjectsModule { }
