@@ -1,0 +1,58 @@
+<div fxLayout="row" fxLayoutWrap="wrap">
+  <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <div fxLayout="row" fxLayoutWrap="wrap">
+          <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
+            <form [formGroup]="projectForm" novalidate>
+              <div class="form-container">
+                <mat-form-field>
+                  <input matInput placeholder="Title project" formControlName="title">
+                  <app-form-error-message [field]="projectForm.controls.title"></app-form-error-message>
+                </mat-form-field>
+              </div>
+              <div class="form-container">
+                <mat-form-field>
+                  <textarea matInput placeholder="Description project" formControlName="description"></textarea>
+                  <app-form-error-message [field]="projectForm.controls.description"></app-form-error-message>
+                </mat-form-field>
+              </div>
+              <div class="form-container">
+                <mat-form-field>
+                  <input matInput placeholder="Company project" formControlName="company">
+                  <app-form-error-message [field]="projectForm.controls.company"></app-form-error-message>
+                </mat-form-field>
+              </div>
+              <div class="form-container">
+                <mat-form-field>
+                  <input matInput placeholder="Url project" formControlName="url">
+                  <app-form-error-message [field]="projectForm.controls.url"></app-form-error-message>
+                </mat-form-field>
+              </div>
+              <div class="form-container">
+                <mat-form-field>
+                  <input matInput [matDatepicker]="picker" placeholder="Realest date" formControlName="realestDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker touchUi="true" #picker></mat-datepicker>
+                  <app-form-error-message [field]="projectForm.controls.realestDate"></app-form-error-message>
+                </mat-form-field>
+              </div>
+              <div class="form-container">
+                <mat-form-field>
+                  <mat-select placeholder="Categories project" formControlName="projectCategories" [value]="project.projectCategories" multiple>
+                    <mat-option *ngFor="let category of categories" [value]="category">{{category.title}}</mat-option>
+                  </mat-select>
+                  <app-form-error-message [field]="projectForm.controls.projectCategories"></app-form-error-message>
+                </mat-form-field>
+              </div>
+              <div class="d-flex justify-content-end">
+                <button mat-button color="accent" routerLink="/project">Back</button>
+                <button mat-raised-button color="accent" (click)="store()" [disabled]="!projectForm.valid">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
