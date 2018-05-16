@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProjectEntity } from 'app/common/entities/project.entity';
+import { FeedbackEntity } from 'app/common/entities/feedback.entity';
 
 @Component({
-  templateUrl: 'projects.component.html',
+  templateUrl: 'feedbacks.component.html',
 })
-export class ProjectsComponent {
+export class FeedbacksComponent {
 
-  public readonly projects: ProjectEntity[];
+  public readonly feedbacks: FeedbackEntity[];
 
   /**
    * @param {Router} router
@@ -15,7 +15,7 @@ export class ProjectsComponent {
    */
   constructor(private router: Router,
               private route: ActivatedRoute) {
-    this.projects = this.route.snapshot.data['projects'];
+    this.feedbacks = this.route.snapshot.data['feedbacks'];
   }
 
   /**
@@ -25,7 +25,7 @@ export class ProjectsComponent {
    */
   public selectRow(event) {
     if (event.type === 'click') {
-      return this.router.navigateByUrl(`/projects/${event.row.id}/update`);
+      return this.router.navigateByUrl(`/feedbacks/${event.row.id}`);
     }
   }
 }

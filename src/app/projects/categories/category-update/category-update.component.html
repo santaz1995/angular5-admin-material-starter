@@ -10,11 +10,15 @@
                   <input matInput placeholder="Title category" formControlName="title">
                   <app-form-error-message [field]="categoryForm.controls.title"></app-form-error-message>
                 </mat-form-field>
-                </div>
+              </div>
               <div class="d-flex justify-content-end">
-                <button mat-button color="accent" routerLink="/projects/category">Back</button>
+                <button mat-button color="accent" routerLink="/projects/categories">Back</button>
                 <button mat-raised-button color="accent" (click)="update()">Save</button>
               </div>
+              <button mat-button class="btn-floating waves-effect waves-light btn-large red" (click)="delete()"
+                      aria-label="delete_outline">
+                <mat-icon class="material-icons">delete_outline</mat-icon>
+              </button>
             </form>
           </div>
         </div>

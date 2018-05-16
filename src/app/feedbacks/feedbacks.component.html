@@ -9,14 +9,16 @@
             <ngx-datatable
               class="material mt-3"
               [columnMode]="'force'"
-              [rows]="categories"
+              [rows]="feedbacks"
               [headerHeight]="50"
               [footerHeight]="50"
               [rowHeight]="50"
-              [sortType]="'multi'"
-              (activate)="selectRow($event)">
+              (activate)="selectRow($event)"
+              [sortType]="'multi'">
               <ngx-datatable-column prop="id" name="ID" [maxWidth]="30"></ngx-datatable-column>
-              <ngx-datatable-column prop="title" name="Title"></ngx-datatable-column>
+              <ngx-datatable-column prop="email" name="Email"></ngx-datatable-column>
+              <ngx-datatable-column prop="name" name="Name"></ngx-datatable-column>
+              <ngx-datatable-column prop="subject" name="Subject"></ngx-datatable-column>
               <ngx-datatable-column name="Created at">
                 <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
                   Created at
@@ -29,9 +31,6 @@
           </div>
         </div>
       </mat-card-content>
-      <button mat-button class="btn-floating waves-effect waves-light btn-large red" routerLink="/projects/categories/store" aria-label="Add">
-        <mat-icon class="material-icons">add</mat-icon>
-      </button>
     </mat-card>
   </div>
   <!-- column -->

@@ -19,7 +19,7 @@ const routes: Routes = [
     component: CategoryStoreComponent,
   },
   {
-    path: ':id',
+    path: ':id/update',
     component: CategoryUpdateComponent,
     resolve: {
       category: CategoryByIdResolver,

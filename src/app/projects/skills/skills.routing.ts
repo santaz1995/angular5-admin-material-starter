@@ -19,7 +19,7 @@ const routes: Routes = [
     component: SkillStoreComponent,
   },
   {
-    path: ':id',
+    path: ':id/update',
     component: SkillUpdateComponent,
     resolve: {
       skill: SkillByIdResolver,

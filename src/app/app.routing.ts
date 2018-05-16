@@ -21,6 +21,10 @@ export const routes: Routes = [
         path: 'projects',
         loadChildren: 'app/projects/projects.module#ProjectsModule',
       },
+      {
+        path: 'feedbacks',
+        loadChildren: 'app/feedbacks/feedbacks.module#FeedbacksModule',
+      },
     ]
   }
 ];

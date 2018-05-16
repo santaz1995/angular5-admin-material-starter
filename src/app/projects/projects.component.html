@@ -6,7 +6,6 @@
         <!-- Row -->
         <div fxLayout="row" fxLayoutWrap="wrap">
           <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
-            <button mat-raised-button color="accent" routerLink="/projects/store">Create new</button>
             <ngx-datatable
               class="material mt-3"
               [columnMode]="'force'"
@@ -14,6 +13,7 @@
               [headerHeight]="50"
               [footerHeight]="50"
               [rowHeight]="50"
+              (activate)="selectRow($event)"
               [sortType]="'multi'">
               <ngx-datatable-column prop="id" name="ID" [maxWidth]="30"></ngx-datatable-column>
               <ngx-datatable-column prop="title" name="Title"></ngx-datatable-column>
@@ -35,19 +35,13 @@
                   {{row.realestDate | amFromUtc | amDateFormat: 'MMMM Do YYYY'}}
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Action" [cellClass]="'action-button'">
-                <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
-                  Action
-                </ng-template>
-                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-                  <button mat-button color="accent" routerLink="{{row.id}}/update">Edit</button>
-                  <button mat-button color="warn" (click)="delete(row.id, row.title)">Delete</button>
-                </ng-template>
-              </ngx-datatable-column>
             </ngx-datatable>
           </div>
         </div>
       </mat-card-content>
+      <button mat-button class="btn-floating waves-effect waves-light btn-large red" routerLink="/projects/store" aria-label="Add">
+        <mat-icon class="material-icons">add</mat-icon>
+      </button>
     </mat-card>
   </div>
   <!-- column -->

@@ -15,6 +15,10 @@
                 <button mat-button color="accent" routerLink="/projects/skills">Back</button>
                 <button mat-raised-button color="accent" (click)="update()">Save</button>
               </div>
+              <button mat-button class="btn-floating waves-effect waves-light btn-large red" (click)="delete()"
+                      aria-label="delete_outline">
+                <mat-icon class="material-icons">delete_outline</mat-icon>
+              </button>
             </form>
           </div>
         </div>
