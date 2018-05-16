@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FeedbackEntity } from 'app/common/entities/feedback.entity';
 
 @Component({
@@ -7,12 +7,25 @@ import { FeedbackEntity } from 'app/common/entities/feedback.entity';
 })
 export class FeedbacksComponent {
 
-  public feedbacks: FeedbackEntity[];
+  public readonly feedbacks: FeedbackEntity[];
 
   /**
+   * @param {Router} router
    * @param {ActivatedRoute} route
    */
-  constructor(private route: ActivatedRoute) {
+  constructor(private router: Router,
+              private route: ActivatedRoute) {
     this.feedbacks = this.route.snapshot.data['feedbacks'];
+  }
+
+  /**
+   * Event clink on row
+   * @param event
+   * @returns {Promise<boolean>}
+   */
+  public selectRow(event) {
+    if (event.type === 'click') {
+      return this.router.navigateByUrl(`/feedbacks/${event.row.id}`);
+    }
   }
 }

@@ -6,6 +6,30 @@
         <!-- Row -->
         <div fxLayout="row" fxLayoutWrap="wrap">
           <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
+            <div class="form-container">
+              <mat-form-field>
+                <input matInput placeholder="Name" [value]="feedback.name" [disabled]="true">
+              </mat-form-field>
+            </div>
+            <div class="form-container">
+              <mat-form-field>
+                <input matInput placeholder="Email" [value]="feedback.email" [disabled]="true">
+              </mat-form-field>
+            </div>
+            <div class="form-container">
+              <mat-form-field>
+                <input matInput placeholder="Subject" [value]="feedback.subject" [disabled]="true">
+              </mat-form-field>
+            </div>
+            <div class="form-container">
+              <mat-form-field>
+                <textarea matInput placeholder="Message" [value]="feedback.message" [disabled]="true"></textarea>
+              </mat-form-field>
+            </div>
+            <div class="d-flex justify-content-end">
+              <button mat-button color="accent" routerLink="/feedbacks">Back</button>
+              <button mat-raised-button color="warn" (click)="delete()">Delete</button>
+            </div>
           </div>
         </div>
       </mat-card-content>

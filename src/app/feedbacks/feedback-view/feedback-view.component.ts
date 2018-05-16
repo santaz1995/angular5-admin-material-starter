@@ -15,4 +15,8 @@ export class FeedbackViewComponent {
   constructor(private route: ActivatedRoute) {
     this.feedback = this.route.snapshot.data['feedback'];
   }
+
+  public delete() {
+    /** TODO: DO IT */
+  }
 }

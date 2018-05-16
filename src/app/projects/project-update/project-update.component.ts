@@ -6,6 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiProjectService } from 'app/common/service/data/api-project.service';
 import { ProjectCategoryEntity } from 'app/common/entities/project-category.entity';
 import { ProjectEntity } from 'app/common/entities/project.entity';
+import { DeleteEntityModalComponent } from 'app/common/modals/delete-entity/delete-entity-modal.component';
+import { MatDialog } from '@angular/material';
 
 /**
  * TODO: Set selected value
@@ -24,12 +26,14 @@ export class ProjectUpdateComponent {
   private handleBackendErrors = handleBackendErrors;
 
   /**
+   * @param {MatDialog} dialog
    * @param {Router} router
    * @param {ActivatedRoute} route
    * @param {NotificationsService} notification
    * @param {ApiProjectService} projectService
    */
-  constructor(private router: Router,
+  constructor(public dialog: MatDialog,
+              private router: Router,
               private route: ActivatedRoute,
               private notification: NotificationsService,
               private projectService: ApiProjectService) {
@@ -41,12 +45,33 @@ export class ProjectUpdateComponent {
   /**
    * Store project
    */
-  protected store(): void {
+  public store(): void {
     this.projectService.store(this.projectForm.value).subscribe( () => {
       this.notification.success('Success', 'Project created');
-      this.router.navigateByUrl('/projects');
+      return this.router.navigateByUrl('/projects');
     }, (errorRequest) => {
       this.handleBackendErrors(this.projectForm, errorRequest.error.violations);
+    });
+  }
+
+  /**
+   * Delete project
+   */
+  public delete() {
+    const dialogRef = this.dialog.open(DeleteEntityModalComponent, {
+      width: '320px',
+      data: {
+        entity: 'Project'
+      }
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.projectService.delete(this.project.id).subscribe(() => {
+          this.notification.success('Success', 'Success deleted project');
+          return this.router.navigateByUrl('/projects');
+        });
+      }
     });
   }
 

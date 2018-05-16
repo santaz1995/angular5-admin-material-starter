@@ -1,52 +1,31 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { MatDialog } from '@angular/material';
-import { DeleteEntityModalComponent } from 'app/common/modals/delete-entity/delete-entity-modal.component';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectSkillEntity } from 'app/common/entities/project-skill.entity';
-import { ApiProjectSkillService } from 'app/common/service/data/api-project-skill.service';
-import { NotificationsService } from 'angular2-notifications/dist';
 
 @Component({
   templateUrl: 'skills.component.html',
 })
 export class SkillsComponent {
 
-  private readonly skills: ProjectSkillEntity[];
+  public readonly skills: ProjectSkillEntity[];
 
   /**
-   * @param {MatDialog} dialog
+   * @param {Router} router
    * @param {ActivatedRoute} route
-   * @param {NotificationsService} notification
-   * @param {ApiProjectSkillService} projectSkillService
    */
-  constructor(public dialog: MatDialog,
-              private route: ActivatedRoute,
-              private notification: NotificationsService,
-              private projectSkillService: ApiProjectSkillService) {
+  constructor(private router: Router,
+              private route: ActivatedRoute) {
     this.skills = this.route.snapshot.data['skills'];
   }
 
   /**
-   * Delete skill
-   * @param id
-   * @param title
+   * Event clink on row
+   * @param event
+   * @returns {Promise<boolean>}
    */
-  public delete(id, title): void {
-    const dialogRef = this.dialog.open(DeleteEntityModalComponent, {
-      width: '320px',
-      data: {
-        entity: 'Skill'
-      }
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.projectSkillService.delete(id).subscribe( () => {
-          const index = this.skills.findIndex(toDelete => toDelete.id === id);
-          this.skills.splice(index, 1);
-          this.notification.success('Success', 'Success deleted project skill');
-        });
-      }
-    });
+  public selectRow(event) {
+    if (event.type === 'click') {
+      return this.router.navigateByUrl(`/projects/skills/${event.row.id}/update`);
+    }
   }
 }
