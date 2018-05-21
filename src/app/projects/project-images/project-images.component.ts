@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProjectEntity } from 'app/common/entities/project.entity';
+import { ProjectImageEntity } from 'app/common/entities/project-image.entity';
 
 @Component({
-  templateUrl: 'projects.component.html',
+  templateUrl: 'project-images.component.html',
 })
-export class ProjectsComponent {
+export class ProjectImagesComponent {
 
-  public projects: ProjectEntity[];
+  public projectImages: ProjectImageEntity[];
 
   /**
    * @param {Router} router
@@ -15,7 +15,7 @@ export class ProjectsComponent {
    */
   constructor(private router: Router,
               private route: ActivatedRoute) {
-    this.projects = this.route.snapshot.data['projects'];
+    this.projectImages = this.route.snapshot.data['projectImages'];
   }
 
   /**

@@ -6,6 +6,9 @@ import { ProjectStoreComponent } from 'app/projects/project-store/project-store.
 import { CategoriesResolver } from 'app/common/resolvers/project/category/categories.resolver';
 import { ProjectUpdateComponent } from 'app/projects/project-update/project-update.component';
 import { ProjectByIdResolver } from 'app/common/resolvers/project/project-by-id.resolver';
+import { ProjectImagesComponent } from 'app/projects/project-images/project-images.component';
+import { ProjectImagesResolver } from 'app/common/resolvers/project/project-images.resolver';
+import { ProjectImageStoreComponent } from 'app/projects/project-images/project-image-store/project-image-store.component';
 
 const routes: Routes = [
   {
@@ -29,6 +32,17 @@ const routes: Routes = [
       project: ProjectByIdResolver,
       categories: CategoriesResolver,
     },
+  },
+  {
+    path: ':id/images',
+    component: ProjectImagesComponent,
+    resolve: {
+      projectImages: ProjectImagesResolver,
+    },
+  },
+  {
+    path: ':id/images/store',
+    component: ProjectImageStoreComponent,
   },
   {
     path: 'skills',
