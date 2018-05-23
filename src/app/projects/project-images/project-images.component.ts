@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectImageEntity } from 'app/common/entities/project-image.entity';
 
@@ -10,10 +10,12 @@ export class ProjectImagesComponent {
   public projectImages: ProjectImageEntity[];
 
   /**
+   * @param {string} assetsUrl
    * @param {Router} router
    * @param {ActivatedRoute} route
    */
-  constructor(private router: Router,
+  constructor(@Inject('assetsUrl') public assetsUrl: string,
+              private router: Router,
               private route: ActivatedRoute) {
     this.projectImages = this.route.snapshot.data['projectImages'];
   }

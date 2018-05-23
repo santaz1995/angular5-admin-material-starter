@@ -12,7 +12,7 @@ export class ProjectImagesResolver implements Resolve<ProjectImageEntity[]> {
    * @returns {Observable<ProjectImageEntity[]>}
    */
   public resolve(route: ActivatedRouteSnapshot) {
-    this.projectImageService.url = `/project/${route.params['id']}/images`;
+    this.projectImageService.url = `/projects/${route.params['id']}/images`;
     return this.projectImageService.getAll();
   }
 }

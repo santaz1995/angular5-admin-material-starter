@@ -1,11 +1,13 @@
-import { Component, Inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, Inject, Output } from '@angular/core';
+import { ProjectImageEntity } from 'app/common/entities/project-image.entity';
 
 @Component({
   selector: 'app-dropzone',
   templateUrl: 'dropzone.component.html',
 })
 export class DropzoneComponent {
+
+  @Output() private imagePath = new EventEmitter<ProjectImageEntity>();
 
   public config = {
     url: `${this.backendUrl}/uploads/multipart`,
@@ -15,16 +17,12 @@ export class DropzoneComponent {
     method: 'post',
   };
 
-  constructor(@Inject('backendUrl') protected backendUrl: string) {
-  }
+  constructor(@Inject('backendUrl') protected backendUrl: string) {}
 
   /**
-   * Upload
-   * @param $event
+   * @param imageData
    */
-  public uploadSuccess($event) {
-    /**
-     * TODO: handel
-     */
+  public uploadSuccess(imageData): void {
+    this.imagePath.emit({imagePath: imageData[1].imagePath} as ProjectImageEntity);
   }
 }

@@ -8,7 +8,7 @@
               <h3 class="card-title">Upload image</h3>
               <h6 class="card-subtitle">Upload image for project</h6>
             </div>
-            <app-dropzone></app-dropzone>
+            <app-dropzone (imagePath)="store($event)"></app-dropzone>
           </div>
         </div>
       </mat-card-content>

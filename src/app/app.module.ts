@@ -47,6 +47,10 @@ import { DeleteEntityModalComponent } from 'app/common/modals/delete-entity/dele
       useValue: environment.backendUrl,
     },
     {
+      provide: 'assetsUrl',
+      useValue: environment.assetsUrl,
+    },
+    {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true,

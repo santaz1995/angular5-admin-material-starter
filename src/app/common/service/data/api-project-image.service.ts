@@ -24,7 +24,7 @@ export class ApiProjectImageService extends ApiService<ProjectImageEntity> {
   /**
    * @returns {string}
    */
-  public endpointUrl(): any {
+  public endpointUrl(): string {
     return this.url;
   }
 
