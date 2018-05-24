@@ -7,7 +7,7 @@ import { ProjectEntity } from 'app/common/entities/project.entity';
 })
 export class ProjectsComponent {
 
-  public readonly projects: ProjectEntity[];
+  public projects: ProjectEntity[];
 
   /**
    * @param {Router} router

@@ -251,7 +251,7 @@ html body {
 }
 
 .p-t-0 {
-    padding-top: 0px;
+    padding-top: 0;
 }
 
 .p-t-10 {
@@ -955,7 +955,7 @@ Mat card
         margin-bottom: 20px;
     }
     .mat-card-actions{
-        margin: 0px!important;
+        margin: 0 !important;
     }
 }
 
@@ -1050,3 +1050,25 @@ mat-dialog-actions {
   font-size: 11px; }
 .page-titles .breadcrumb .breadcrumb-item.active {
   color: #99abb4; }
+.drop-zone dropzone{
+  height: 100%;
+}
+.drop-zone dropzone>.dropzone.dz-wrapper{
+  height: 100%;
+  overflow: hidden;
+}
+.drop-zone dropzone>.dropzone.dz-wrapper .dz-message{
+  height: 100%;
+  margin: 0;
+  border-radius: 10px;
+}
+dropzone>.dropzone.dz-wrapper .dz-message{
+  height: 180px;
+}
+dropzone>.dropzone.dz-wrapper .dz-preview{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-58%) translateY(-58%);
+  border-radius: 22px;
+}

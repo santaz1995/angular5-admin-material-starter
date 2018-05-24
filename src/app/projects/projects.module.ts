@@ -13,6 +13,11 @@ import { CategoriesResolver } from 'app/common/resolvers/project/category/catego
 import { ApiProjectCategoryService } from 'app/common/service/data/api-project-category.service';
 import { ProjectUpdateComponent } from 'app/projects/project-update/project-update.component';
 import { ProjectByIdResolver } from 'app/common/resolvers/project/project-by-id.resolver';
+import { ProjectImagesResolver } from 'app/common/resolvers/project/project-images.resolver';
+import { ProjectImagesComponent } from 'app/projects/project-images/project-images.component';
+import { ApiProjectImageService } from 'app/common/service/data/api-project-image.service';
+import { ProjectImageStoreComponent } from 'app/projects/project-images/project-image-store/project-image-store.component';
+import { AppDropzoneModule } from 'app/common/components/dropzone/dropzone.module';
 
 @NgModule({
   imports: [
@@ -22,19 +27,24 @@ import { ProjectByIdResolver } from 'app/common/resolvers/project/project-by-id.
     NgxDatatableModule,
     MomentModule,
     MaterialModule,
-    ProjectsRouting
+    ProjectsRouting,
+    AppDropzoneModule
   ],
   declarations: [
     ProjectsComponent,
     ProjectStoreComponent,
     ProjectUpdateComponent,
+    ProjectImagesComponent,
+    ProjectImageStoreComponent
   ],
   providers: [
     ApiProjectService,
     ApiProjectCategoryService,
+    ApiProjectImageService,
     ProjectsResolver,
     ProjectByIdResolver,
-    CategoriesResolver
+    CategoriesResolver,
+    ProjectImagesResolver
   ],
 })
 export class ProjectsModule { }

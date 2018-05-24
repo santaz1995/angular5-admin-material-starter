@@ -16,17 +16,17 @@ File: scss
  *	7. Widgets
  *	8. Custom Templates
  */
-@import 'variable';
 
 @import '~@swimlane/ngx-datatable/release/index.css';
 @import '~@swimlane/ngx-datatable/release/themes/material.css';
 @import '~@swimlane/ngx-datatable/release/assets/icons.css';
-
+@import '~bootstrap/scss/bootstrap';
+@import '~dropzone/dist/min/dropzone.min.css';
+@import 'variable';
 @import 'spinner';
 @import 'app';
 @import 'header';
 @import 'pages';
 @import 'sidebar';
 @import 'responsive';
-@import '~bootstrap/scss/bootstrap';
 @import "material";
